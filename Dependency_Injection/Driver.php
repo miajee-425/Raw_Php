@@ -1,55 +1,45 @@
 <?php
 
-class Driver
+class User
 {
-    private $vehicle;
+    private $db;
 
-    public function __construct(VehicleInterface $vehicle)
+    public function __construct(DatabaseInterface $db)
     {
-        $this->vehicle = $vehicle;
+        $this->db = $db;
     }
 
-    public function startVehicle()
+    public function connectDatabase()
     {
-        $this->vehicle->start();
-    }
-}
-
-class Bike implements VehicleInterface
-{
-
-    public function start()
-    {
-        print("Bike Start");
+        $this->db->connect();
     }
 }
 
-class Car implements VehicleInterface
+class Mysql implements DatabaseInterface
 {
 
-    public function start()
+    public function connect()
     {
-        print("Car Start");
+        print("Mysql Connect");
     }
 }
 
-class Plane implements VehicleInterface
+class PostgreSql implements DatabaseInterface
 {
 
-    public function start()
+    public function connect()
     {
-       print("Plane Start");
+        print("PostgreSql Connect");
     }
 }
 
-interface VehicleInterface
+interface DatabaseInterface
 {
-    public function start();
+    public function connect();
 }
 
-$bike = new Bike();
-$car = new Car();
-$plane = new Plane();
-$driver = new Driver($bike);
-$driver->startVehicle();
+$mysql = new Mysql();
+$postgreSql = new PostgreSql();
+$user = new User($mysql);
+$user->connectDatabase();
 ?>
