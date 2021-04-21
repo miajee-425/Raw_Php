@@ -1,44 +1,23 @@
 <?php
 
-
-# We can log to a file or we log to database or we can log some kind of saas service
-interface Logger
+# Imagine that you need to specify a class can cast data to Json
+interface CastToJson
 {
-    public function execute($message);
+    public function toJson();
 }
 
-class LogToFile implements Logger
+class User implements CastToJson
 {
-    public function execute($message)
+    public function toJson()
     {
-        var_dump("Log the message to a file : $message");
+        // TODO: Implement toJson() method.
     }
 }
 
-class LogToDatabase implements Logger
+class Collection implements CastToJson
 {
-    public function execute($message)
+    public function toJson()
     {
-        var_dump("Log the message to a database : $message");
+        // TODO: Implement toJson() method.
     }
 }
-
-//....
-class UserController
-{
-    private $logger;
-
-    public function __construct(Logger $logger)
-    {
-        $this->logger = $logger;
-    }
-
-    public function show()
-    {
-        $user = "Jhon Doe";
-        // log this information
-        $this->logger->execute($user);
-    }
-}
-
-dd((new UserController(new LogToDatabase()))->show()); # UserController class will not be changed again
