@@ -1,11 +1,12 @@
 <?php
-class Math{
-    public function add()
+class Math
+{
+    public function add(...$nums)
     {
-        return array_sum(func_get_args());
+        return array_sum($nums);
     }
 }
 
 $math = new Math();
-dd($math->add(1,2,3)); #6
-dd($math->add(1,2,3,4)); #10
+dump($math->add(1, 2, 3)); #6
+dd($math->add(1, 2, 3, 4)); #10
