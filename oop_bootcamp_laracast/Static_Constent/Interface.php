@@ -1,22 +1,23 @@
 <?php
 
-# Imagine that you need to specify a class can cast data to Json
-interface CastToJson
+interface Repository
 {
-    public function toJson();
+    public function save();
 }
 
-class User implements CastToJson
+class MongoRepository implements Repository
 {
-    public function toJson()
+
+    public function save()
     {
         // TODO: Implement toJson() method.
     }
 }
 
-class Collection implements CastToJson
+class FileRepository implements Repository
 {
-    public function toJson()
+
+    public function save()
     {
         // TODO: Implement toJson() method.
     }
