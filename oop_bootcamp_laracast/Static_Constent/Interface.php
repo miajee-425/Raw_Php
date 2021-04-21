@@ -1,24 +1,31 @@
 <?php
 
-interface Repository
+
+interface CanBeFiltered
 {
-    public function save();
+    public function filter();
 }
 
-class MongoRepository implements Repository
+class Favorited implements CanBeFiltered
 {
-
-    public function save()
+    public function filter()
     {
-        // TODO: Implement toJson() method.
+        // TODO: Implement filter() method.
     }
 }
 
-class FileRepository implements Repository
+class Unwatched implements CanBeFiltered
 {
-
-    public function save()
+    public function filter()
     {
-        // TODO: Implement toJson() method.
+        // TODO: Implement filter() method.
+    }
+}
+
+class Difficulty implements CanBeFiltered
+{
+    public function filter()
+    {
+        // TODO: Implement filter() method.
     }
 }
